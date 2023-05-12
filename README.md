@@ -14,14 +14,30 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Using Signals
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. create service for signal
+2. create signal like below
 
-## Running end-to-end tests
+```
+isClicked = signal(false)
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. expose signal for use by components using compute()
 
-## Further help
+```
+buttonState = computed(() => this.isClicked())
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+4. import service into external component and initialise new component variable to use the signal compute
+
+```
+isClicked = this.contactService.buttonState;
+```
+
+5. remember that signal values are read like a function --> isClicked(), not isClicked
+6. signals can be updated using set, update or mutate. I used update as seen below
+
+```
+this.isClicked.update((value)=> value = !this.isClicked())
+```
