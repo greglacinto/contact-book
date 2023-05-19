@@ -1,5 +1,4 @@
-import { Component, OnInit, computed, effect } from '@angular/core';
-import { ContactList } from './model/contact';
+import { Component, OnInit, effect } from '@angular/core';
 import { ContactService } from './service/contact.service';
 
 
@@ -9,30 +8,33 @@ import { ContactService } from './service/contact.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  // addButtonValue: boolean = 
-  isClicked = this.contactService.buttonState;
   title = 'phone-book-app';
-  contactkeys = ''
-  contactList: ContactList = {}
-  contactDetail: any;
-  
+    
+
+  // isClicked signal
+  isClicked = this.contactService.isClicked;
+    
+  //all contact signal
+  allContact = this.contactService.allContact();
 
 
-  constructor(private contactService: ContactService){ }
+  constructor(private contactService: ContactService){ 
+
+    effect(() => {
+      this.allContact = this.contactService.allContact();
+      console.log(this.allContact);
+    });
+
+  }
 
   ngOnInit(){
-    this.contactList = this.contactService.viewAllContact();
-    const contactDetail = Object.values(this.contactList);
-    contactDetail.forEach(item => {
-      console.log(item);
-    })
-
-    console.log(this.isClicked);
+    this.contactService.allContact.set(this.contactService.viewAllContact());
+    
   }
 
   addContactButton(){
     this.contactService.setButtonState();
-    console.log(this.isClicked());
-    // this.isClicked = !this.isClicked;
   }
+
+  
 }

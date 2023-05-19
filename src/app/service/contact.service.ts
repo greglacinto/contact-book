@@ -1,5 +1,5 @@
 import { Injectable, computed, signal } from '@angular/core';
-import { Contact, ContactList } from '../model/contact';
+import { Contact } from '../model/contact';
 
 @Injectable({
   providedIn: 'root'
@@ -8,22 +8,24 @@ export class ContactService {
 
   constructor() { }
 
-  storage: ContactList = {}
   isClicked = signal(false);
-  buttonState = computed(() => this.isClicked());
 
+  allContact = signal<Contact[]>([]);
+  
+
+  storage: Contact[] = []
   
   add(value: Contact) {
-    const key = `${value.firstName}`
+    const key = `${value.firstName}`;
     sessionStorage.setItem(key, JSON.stringify(value));
   }
 
-  viewAllContact(): ContactList{
+  viewAllContact(): Contact[]{
     let contactKeys = Object.keys(sessionStorage);
+    this.storage = []
     for(let key of contactKeys){
-      this.storage[key] = sessionStorage.getItem(key);
+      this.storage.push(JSON.parse(sessionStorage.getItem(key) || '{}'));
     }
-    
     return this.storage;
   }
 
@@ -32,4 +34,8 @@ export class ContactService {
     this.isClicked.update((value)=> value = !this.isClicked());
     console.log(this.isClicked());
   }
+
+  
 }
+
+

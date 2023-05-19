@@ -7,9 +7,8 @@ export interface Contact {
 
 }
 
-export interface ContactList {
-[id: string]: any
-}
+export type ContactList = Contact[];
+
 
 export interface ContactKeys {
 name: string

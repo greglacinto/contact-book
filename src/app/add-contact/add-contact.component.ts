@@ -21,8 +21,10 @@ export class AddContactComponent {
   }
 
   onSubmit(formData: Contact){
-    console.log(formData);
     this.contactService.add(formData);
     this.form.reset();
+    this.contactService.setButtonState();
+    this.contactService.allContact.update(()=> this.contactService.viewAllContact());
+    this.contactService.allContact()
   }
 }
