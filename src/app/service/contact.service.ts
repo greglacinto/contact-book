@@ -1,4 +1,4 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Contact } from '../model/contact';
 
 @Injectable({
@@ -11,6 +11,7 @@ export class ContactService {
   isClicked = signal(false);
   allContact = signal<Contact[]>([]);
   showModal = signal<boolean>(false);
+  deleteModalIsShown = signal<boolean>(false);
   
   storage: Contact[] = []
   
@@ -28,15 +29,25 @@ export class ContactService {
     return this.storage;
   }
 
+  DeleteContact(value: any){
+    sessionStorage.removeItem(value);
+    this.allContact
+      .set(this.viewAllContact());
+  }
+
   setButtonState(): void{
-    console.log("inside the set button state");
     this.isClicked.update((value)=> value = !this.isClicked());
-    console.log(this.isClicked());
   }
 
 
-  openModal(){
-    this.showModal.update((value)=> value = !this.showModal());
+  toggleModal(comp: string){
+
+    comp == "viewContact" ? 
+      this.showModal.update((value)=> value = !this.showModal())
+    : comp == "deleteContact" ?
+      this.deleteModalIsShown.update((value)=> value = !this.deleteModalIsShown())
+    : null;
+    
   }
   
 }

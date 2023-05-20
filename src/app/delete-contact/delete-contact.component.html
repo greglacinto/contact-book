@@ -1,0 +1,22 @@
+<div>
+  <!-- The Modal -->
+  <div id="myModal" class="modal" [class.show]="deleteModalIsShown() == true">
+
+    <!-- Modal content -->
+    <div class="modal-content mx-auto">
+      <div class="modal-header">
+        <span (click)="closeModal()" class="close">&times;</span>
+      </div>
+      <div class="modal-body" >
+        <p> Delete {{ deleteContact}} ?</p>
+        
+      </div>
+      <div class="modal-footer">
+        <button (click)="okayToDeleteContact()" class="btn btn-success">Yes</button>
+        <button (click)="doNotDeleteContact()" class="btn btn-success">No</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

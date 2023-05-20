@@ -22,7 +22,7 @@
                 View 
                 <i class="fas fa-pencil-alt"></i>
             </button>
-            <button class="btn btn-danger btn-sm">
+            <button class="btn btn-danger btn-sm" (click)="deleteContact(contact.firstName, contact.lastName)">
               Delete
                 <i class="fas fa-trash-alt"></i>
             </button>
@@ -41,5 +41,6 @@
 
 <app-view-contact [selectedContact]="selectedContactDetails"></app-view-contact>
 
+<app-delete-contact [deleteContact]="deleteContactDetails"></app-delete-contact>
 </div>
 

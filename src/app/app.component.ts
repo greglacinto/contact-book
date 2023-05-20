@@ -11,14 +11,16 @@ import { Contact } from './model/contact';
 export class AppComponent implements OnInit {
   title = 'phone-book-app';
   showModal: boolean = false;
-  selectedContactInput = '';
-  selectedContactDetails : Contact[]= [{
-    firstName: '', lastName: '', email: '', phoneNumber: '', relation: ''}]
-
+  // Input for View Contact Component
+  selectedContactDetails : Contact[]= 
+  [{
+    firstName: '', lastName: '', email: '', phoneNumber: '', relation: ''
+  }]
+  // Input for delete contact component
+  deleteContactDetails! : string;
   // isClicked signal
   isClicked = this.contactService.isClicked;
-    
-  //all contact signal
+  // all contact signal
   allContact = this.contactService.allContact();
 
 
@@ -46,7 +48,12 @@ export class AppComponent implements OnInit {
       .filter((contact) => {
         return contact.firstName == value;
       });
-    this.contactService.openModal();
+    this.contactService.toggleModal("viewContact");
 
+  }
+
+  deleteContact(firstName: string, lastName: string){
+    this.deleteContactDetails = firstName + " " + lastName
+    this.contactService.toggleModal("deleteContact");
   }
 }

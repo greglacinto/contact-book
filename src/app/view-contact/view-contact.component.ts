@@ -16,11 +16,11 @@ export class ViewContactComponent {
   constructor(private contactService: ContactService){}
   
   openModal() {
-    this.contactService.openModal();
+    this.contactService.toggleModal("viewContact");
   }
 
   closeModal(){
-    this.contactService.openModal();
+    this.contactService.toggleModal("viewContact");
     console.log(this.selectedContact)
   }
 
