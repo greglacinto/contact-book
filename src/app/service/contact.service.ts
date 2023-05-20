@@ -35,7 +35,7 @@ export class ContactService {
       .set(this.viewAllContact());
   }
 
-  setButtonState(): void{
+  setAddButtonState(): void{
     this.isClicked.update((value)=> value = !this.isClicked());
   }
 

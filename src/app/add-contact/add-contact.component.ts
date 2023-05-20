@@ -23,7 +23,7 @@ export class AddContactComponent {
   onSubmit(formData: Contact){
     this.contactService.add(formData);
     this.form.reset();
-    this.contactService.setButtonState();
+    this.contactService.setAddButtonState();
     this.contactService.allContact.update(()=> this.contactService.viewAllContact());
     this.contactService.allContact()
   }

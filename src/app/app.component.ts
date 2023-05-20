@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
   }
 
   addContactButton(){
-    this.contactService.setButtonState();
+    this.contactService.setAddButtonState();
   }
 
   viewContact(value: any){
