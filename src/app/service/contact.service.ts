@@ -9,10 +9,9 @@ export class ContactService {
   constructor() { }
 
   isClicked = signal(false);
-
   allContact = signal<Contact[]>([]);
+  showModal = signal<boolean>(false);
   
-
   storage: Contact[] = []
   
   add(value: Contact) {
@@ -35,6 +34,10 @@ export class ContactService {
     console.log(this.isClicked());
   }
 
+
+  openModal(){
+    this.showModal.update((value)=> value = !this.showModal());
+  }
   
 }
 

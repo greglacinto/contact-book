@@ -41,3 +41,14 @@ isClicked = this.contactService.buttonState;
 ```
 this.isClicked.update((value)=> value = !this.isClicked())
 ```
+
+## toggle class on click
+
+```
+<div [class.className] = “condition” />
+```
+
+## pass data to children component
+
+On clicking view button, application should show a modal for particular contact's details.
+This was implemented using angular's @Input feature.

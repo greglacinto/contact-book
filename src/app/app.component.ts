@@ -1,5 +1,6 @@
 import { Component, OnInit, effect } from '@angular/core';
 import { ContactService } from './service/contact.service';
+import { Contact } from './model/contact';
 
 
 @Component({
@@ -9,7 +10,10 @@ import { ContactService } from './service/contact.service';
 })
 export class AppComponent implements OnInit {
   title = 'phone-book-app';
-    
+  showModal: boolean = false;
+  selectedContactInput = '';
+  selectedContactDetails : Contact[]= [{
+    firstName: '', lastName: '', email: '', phoneNumber: '', relation: ''}]
 
   // isClicked signal
   isClicked = this.contactService.isClicked;
@@ -22,13 +26,13 @@ export class AppComponent implements OnInit {
 
     effect(() => {
       this.allContact = this.contactService.allContact();
-      console.log(this.allContact);
     });
 
   }
 
   ngOnInit(){
-    this.contactService.allContact.set(this.contactService.viewAllContact());
+    this.contactService.allContact
+      .set(this.contactService.viewAllContact());
     
   }
 
@@ -36,5 +40,13 @@ export class AppComponent implements OnInit {
     this.contactService.setButtonState();
   }
 
-  
+  viewContact(value: any){
+    console.log(value);
+    this.selectedContactDetails = this.contactService.allContact()
+      .filter((contact) => {
+        return contact.firstName == value;
+      });
+    this.contactService.openModal();
+
+  }
 }

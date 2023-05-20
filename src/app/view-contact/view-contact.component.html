@@ -1,0 +1,26 @@
+<div>
+
+  <!-- Trigger/Open The Modal -->
+  <!-- <button (click)="openModal()" id="openModel">Open Modal</button> -->
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal" [class.show]="isShown() == true">
+
+    <!-- Modal content -->
+    <div class="modal-content mx-auto">
+      <div class="modal-header">
+        <span (click)="closeModal()" class="close">&times;</span>
+      </div>
+      <div class="modal-body" *ngFor="let contact of selectedContact">
+        <p>{{ contact.firstName}} {{ contact.lastName}}</p>
+        <p>{{ contact.email }}</p>
+        <p>{{ contact.phoneNumber }}</p>
+        <p>{{ contact.relation }}</p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+
+  </div>
+
+</div>

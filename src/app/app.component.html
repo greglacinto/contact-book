@@ -18,8 +18,8 @@
             </p>
         </div>
         <div>
-            <button class="btn btn-success btn-sm mx-2">
-                View
+            <button class="btn btn-success btn-sm mx-2" (click)="viewContact(contact.firstName)">
+                View 
                 <i class="fas fa-pencil-alt"></i>
             </button>
             <button class="btn btn-danger btn-sm">
@@ -37,6 +37,9 @@
   <div>
     <app-add-contact *ngIf="isClicked()"></app-add-contact>
   </div>
+
+
+<app-view-contact [selectedContact]="selectedContactDetails"></app-view-contact>
 
 </div>
 
