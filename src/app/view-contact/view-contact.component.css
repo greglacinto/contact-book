@@ -34,6 +34,8 @@
   animation-name: slideIn;
   animation-duration: 0.4s;
   width: 80%;
+  background-color: #1E1E1E;
+  color: white;
 }
 
 /* The Close Button */
@@ -54,11 +56,12 @@
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
   color: white;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+  padding: 2px 16px;
+}
 
 
 /* Add Animation */

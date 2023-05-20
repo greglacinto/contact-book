@@ -1,41 +1,43 @@
 <form (ngSubmit)="onSubmit(contactForm.value)" #contactForm="ngForm">
-  <div class="mb-3">
-    <label for="firstName" class="form-label">First Name</label>
-    <input type="text" [(ngModel)]="contact.firstName" class="form-control" 
-      id="firstName" name="firstName" required #firstName="ngModel">
-    <div [hidden]="firstName.valid || firstName.pristine"
-             class="alert alert-danger">
-          Name is required
-        </div>
+  <div class="text-white container-sm">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input type="text" [(ngModel)]="contact.firstName" class="form-control" 
+        id="firstName" name="firstName" required #firstName="ngModel">
+      <div [hidden]="firstName.valid || firstName.pristine"
+               class="alert alert-danger">
+            Name is required
+          </div>
+    </div>
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input type="text" [(ngModel)]="contact.lastName" class="form-control"
+       id="lastName" name="lastName" #lastName="ngModel" required>
+      <div [hidden]="lastName.valid || lastName.pristine"
+               class="alert alert-danger">
+            Name is required
+          </div>
+    </div>
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">Phone Number</label>
+      <input type="text" [(ngModel)]="contact.phoneNumber" class="form-control"
+       id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel" required>
+      <div [hidden]="phoneNumber.valid || phoneNumber.pristine"
+               class="alert alert-danger">
+            Name is required
+          </div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" [(ngModel)]="contact.email" class="form-control"
+       id="email" name="email">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="relation" class="form-label">Relationship</label>
+      <input type="text" [(ngModel)]="contact.relation" class="form-control"
+       id="relation" name="relation">
+    </div>
+    <button type="submit" [disabled]="contactForm.invalid" class="btn btn-primary">Add new contact</button>
   </div>
-  <div class="mb-3">
-    <label for="lastName" class="form-label">Last Name</label>
-    <input type="text" [(ngModel)]="contact.lastName" class="form-control"
-     id="lastName" name="lastName" #lastName="ngModel" required>
-    <div [hidden]="lastName.valid || lastName.pristine"
-             class="alert alert-danger">
-          Name is required
-        </div>
-  </div>
-  <div class="mb-3">
-    <label for="phoneNumber" class="form-label">Phone Number</label>
-    <input type="text" [(ngModel)]="contact.phoneNumber" class="form-control"
-     id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel" required>
-    <div [hidden]="phoneNumber.valid || phoneNumber.pristine"
-             class="alert alert-danger">
-          Name is required
-        </div>
-  </div>
-  <div class="mb-3">
-    <label for="email" class="form-label">Email address</label>
-    <input type="email" [(ngModel)]="contact.email" class="form-control"
-     id="email" name="email">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="relation" class="form-label">Relationship</label>
-    <input type="text" [(ngModel)]="contact.relation" class="form-control"
-     id="relation" name="relation">
-  </div>
-  <button type="submit" [disabled]="contactForm.invalid" class="btn btn-primary">Add new contact</button>
 </form>

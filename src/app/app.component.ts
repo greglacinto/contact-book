@@ -1,6 +1,7 @@
 import { Component, OnInit, effect } from '@angular/core';
 import { ContactService } from './service/contact.service';
 import { Contact } from './model/contact';
+import { MockDataService } from './service/mock-data.service';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class AppComponent implements OnInit {
   allContact = this.contactService.allContact();
 
 
-  constructor(private contactService: ContactService){ 
+  constructor(private contactService: ContactService, 
+    private mockDataservice: MockDataService){ 
 
     effect(() => {
       this.allContact = this.contactService.allContact();
@@ -33,6 +35,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
+    this.mockDataservice.setDefaultContact();
     this.contactService.allContact
       .set(this.contactService.viewAllContact());
     
